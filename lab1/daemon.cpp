@@ -27,7 +27,7 @@ Daemon::Daemon(const std::string& inp_cfg_path) {
 	else {
 		cfg_path = fs::absolute(inp_cfg_path).string();
 		syslog(LOG_INFO, "config path read successfully");
-		read_cfg(cfg_path);
+		read_cfg();
 	}
 }
 
@@ -100,7 +100,7 @@ void Daemon::task() const {
 	}
 }
 
-void Daemon::read_cfg(const std::string& cfg_path) {
+void Daemon::read_cfg() {
 	std::ifstream cfg_file(cfg_path);
 	std::string rel_f = "";
 	std::getline(cfg_file, rel_f);

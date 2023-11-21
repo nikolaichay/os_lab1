@@ -25,7 +25,7 @@ private:
     void init() const;
     static void h_sighup(int sig);
     static void h_sigterm(int sig);
-    static void read_cfg(const std::string& cfg_path);
+    static void read_cfg();
     void task() const;
     const std::string pid_path = "/var/run/daemon.pid";
     const std::string proc_path = "/proc";
