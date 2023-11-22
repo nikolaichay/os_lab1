@@ -17,18 +17,8 @@ std::string Daemon::cfg_path = "";
 std::string Daemon::dir_path = "";
 
 
-Daemon::Daemon(const std::string& inp_cfg_path) {
+Daemon::Daemon() {
 	openlog("daemon", LOG_PID, LOG_USER);
-	if(!fs::exists(fs::absolute(inp_cfg_path).string())) {
-		syslog(LOG_ERR, "config file doesn`t exist");
-		closelog();
-		exit(EXIT_FAILURE);
-	}
-	else {
-		cfg_path = fs::absolute(inp_cfg_path).string();
-		syslog(LOG_INFO, "config path read successfully");
-		read_cfg();
-	}
 }
 
 void Daemon::init() const {
@@ -78,7 +68,7 @@ void Daemon::launch() const {
 
 void Daemon::h_sighup(int sig) {
 	syslog(LOG_INFO, "SIGHUP received, re-reading config files");
-	read_cfg(cfg_path);
+	read_cfg();
 }
 
 void Daemon::h_sigterm(int sig) {
@@ -110,5 +100,18 @@ void Daemon::read_cfg() {
 		syslog(LOG_ERR, "task: directory doesn`t exist");
 		closelog();
 		exit(EXIT_FAILURE);
+	}
+}
+
+void Daemon::set_cfg_path(const std::string& inp_cfg_path) {
+	if(!fs::exists(fs::absolute(inp_cfg_path).string())) {
+		syslog(LOG_ERR, "config file doesn`t exist");
+		closelog();
+		exit(EXIT_FAILURE);
+	}
+	else {
+		cfg_path = fs::absolute(inp_cfg_path).string();
+		syslog(LOG_INFO, "config path read successfully");
+		read_cfg();
 	}
 }

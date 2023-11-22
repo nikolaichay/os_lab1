@@ -6,7 +6,8 @@ int main(int argc, char *argv[]) {
     exit(EXIT_FAILURE);
   }
   else {
-    const Daemon &d = Daemon::get_instance(argv[1]);
+    Daemon &d = Daemon::get_instance();
+    d.set_cfg_path(argv[1]);
     d.launch();
   }
   return 0; 

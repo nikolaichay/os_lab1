@@ -15,13 +15,14 @@ class Daemon {
     Daemon& operator=(const Daemon&) = delete;
     Daemon& operator=(Daemon&&) = delete;
 public:
-    static Daemon& get_instance(const std::string& cfg_path) {
-        static Daemon instance = Daemon(cfg_path);
+    static Daemon& get_instance() {
+        static Daemon instance = Daemon();
         return instance;
     }
+    void set_cfg_path(const std::string& inp_cfg_path);
     void launch() const;
 private:
-    Daemon(const std::string& cfg_path);
+    Daemon();
     void init() const;
     static void h_sighup(int sig);
     static void h_sigterm(int sig);
