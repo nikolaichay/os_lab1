@@ -5,11 +5,11 @@ set(CMAKE_CXX_STANDARD 17)
 
 set (
   SRC
-  ./src/host.cpp
-  ./src/client.cpp
-  ./src/connections/conn_pipe.cpp
-  ./src/connections/conn_mq.cpp
-   ./src/connections/conn_shm.cpp
+  ./host.cpp
+  ./client.cpp
+  ./connections/conn_pipe.cpp
+  ./connections/conn_mq.cpp
+  ./connections/conn_shm.cpp
 )
 
 add_executable(host ${SRC})
