@@ -7,14 +7,14 @@ set (
   SRC
   ./host.cpp
   ./client.cpp
-  ./connections/conn_pipe.cpp
-  ./connections/conn_mq.cpp
-  ./connections/conn_shm.cpp
+  ./connections/connpipe.cpp
+  ./connections/connmq.cpp
+  ./connections/connshm.cpp
 )
 
 add_executable(host ${SRC})
 
-target_include_directories(host PRIVATE ./src ./src/connections)
+target_include_directories(host PRIVATE  /connections)
 target_link_libraries(host PRIVATE pthread rt)
 
 
