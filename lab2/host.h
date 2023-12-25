@@ -7,7 +7,7 @@
 #include <unordered_map>
 
 #include "client.h"
-#include "conn.h"
+#include "connections/conn.h"
 
 class Host {
  public:

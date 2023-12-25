@@ -23,10 +23,10 @@
 #include <string>
 #include <thread>
 
-#include "conn.h"
-#include "connmq.h"
-#include "connpipe.h"
-#include "connshm.h"
+#include "connections/conn.h"
+#include "connections/connmq.h"
+#include "connections/connpipe.h"
+#include "connections/connshm.h"
 
 Client::Client(ConnectionType conn_type) {
   m_sem_client = sem_open("/client", 0);

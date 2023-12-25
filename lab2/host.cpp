@@ -24,8 +24,9 @@
 #include <vector>
 
 #include "client.h"
-#include "conn.h"
-#include "connpipe.h"
+#include "connections/conn.h"
+#include "connections/connpipe.h"
+
 
 Host& Host::getInstance() {
   static Host instance;

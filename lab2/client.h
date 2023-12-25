@@ -5,7 +5,7 @@
 #include <filesystem>
 #include <memory>
 
-#include "conn.h"
+#include "connections/conn.h"
 
 class Client {
  public:
